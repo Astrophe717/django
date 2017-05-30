@@ -186,7 +186,7 @@ class HttpResponseBase:
             self.cookies[key]['expires'] = ''
         if max_age is not None:
             self.cookies[key]['max-age'] = max_age
-            # IE requires expires, so set it if hasn't been already.
+            # IE requires expires, so if it is not set then set it.
             if not expires:
                 self.cookies[key]['expires'] = cookie_date(time.time() +
                                                            max_age)
@@ -274,7 +274,7 @@ class HttpResponse(HttpResponseBase):
     """
     An HTTP response class with a string as content.
 
-    This content that can be read, appended to, or replaced.
+    This content can be read, appended to, or replaced.
     """
 
     streaming = False
